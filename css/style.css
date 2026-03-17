@@ -1,1 +1,53 @@
 /* Estilos personalizados para el Laboratorio DPW2 */
+/* ESTILO GENERAL */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* SIDEBAR */
+.sidebar {
+  min-height: 100vh;
+  border-right: 1px solid #ccc;
+}
+
+/* 🔹 BREAKPOINT 1: TABLETS */
+@media (max-width: 992px) {
+  body {
+    background-color: #f8f9fa;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 🔹 BREAKPOINT 2: MÓVILES */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Ocultar sidebar */
+  }
+
+  body {
+    background-color: #e9ecef;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* 🔹 BREAKPOINT 3: MÓVILES PEQUEÑOS */
+@media (max-width: 576px) {
+  body {
+    background-color: #dee2e6;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
