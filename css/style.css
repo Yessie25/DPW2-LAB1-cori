@@ -26,7 +26,7 @@ main {
 /* 🔹 BREAKPOINT 1: TABLETS */
 @media (max-width: 992px) {
   body {
-    background-color: #f8f9fa;
+    background-color: #d1f1e5;
   }
 
   h2 {
@@ -41,7 +41,7 @@ main {
 /* 🔹 BREAKPOINT 2: MÓVILES */
 @media (max-width: 768px) {
   body {
-    background-color: #e9ecef;
+    background-color: #dabaf0;
   }
 
   h2 {

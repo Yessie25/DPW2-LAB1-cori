@@ -50,107 +50,213 @@
           <span>Menú</span>
         </h6>
         <ul class="nav flex-column">
-          <li class="nav-item"><a href="#" class="nav-link active">Dashboard</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Usuarios</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Reportes</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Ajustes</a></li>
+          <li class="nav-item"><a href="#" class="nav-link active" data-section="dashboard">Dashboard</a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-section="usuarios">Usuarios</a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-section="reportes">Reportes</a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-section="ajustes">Ajustes</a></li>
         </ul>
       </div>
     </nav>
 
     <!-- CONTENIDO PRINCIPAL -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-4">
-        <div>
-          <h1 class="h2">Dashboard</h1>
-          <p class="text-muted">Bienvenido al panel administrativo. Aquí podrás ver un resumen rápido y administrar usuarios.</p>
+      <!-- DASHBOARD CONTENT -->
+      <div id="dashboard-content" class="content-section">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-4">
+          <div>
+            <h1 class="h2">Dashboard</h1>
+            <p class="text-muted">Bienvenido al panel administrativo. Aquí podrás ver un resumen rápido y administrar usuarios.</p>
+          </div>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Compartir</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
+            </div>
+          </div>
         </div>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Compartir</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
+
+        <!-- CARDS DE RESUMEN -->
+        <div class="row g-4 mb-4">
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <h5 class="card-title">Usuarios</h5>
+                <p class="card-text display-6 mb-0">1,248</p>
+                <p class="text-muted small mb-0">+5% en el último mes</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nuevos registros</h5>
+                <p class="card-text display-6 mb-0">73</p>
+                <p class="text-muted small mb-0">Última semana</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <h5 class="card-title">Reportes</h5>
+                <p class="card-text display-6 mb-0">12</p>
+                <p class="text-muted small mb-0">Pendientes</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <h5 class="card-title">Actividad</h5>
+                <p class="card-text display-6 mb-0">+24%</p>
+                <p class="text-muted small mb-0">Últimas 48 horas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMULARIO DE REGISTRO -->
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Registro de Usuarios</h5>
+            <p class="text-muted small mb-0">Completa los datos y presiona "Registrar".</p>
+          </div>
+          <div class="card-body">
+            <form class="row g-3" id="registroForm" novalidate>
+              <div class="col-md-6">
+                <label class="form-label" for="nombreInput">Nombre</label>
+                <input id="nombreInput" type="text" class="form-control is-valid" required pattern="^[A-ZÁÉÍÓÚÜÑ ]+$" placeholder="SOLO MAYÚSCULAS" oninput="this.value=this.value.toUpperCase().replace(/[^A-ZÁÉÍÓÚÜÑ ]/g,'')">
+                <div class="invalid-feedback">
+                  Solo se permiten letras en mayúsculas y espacios.
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="emailInput">Email</label>
+                <input id="emailInput" type="email" class="form-control is-valid" required>
+                <div class="invalid-feedback">
+                  Ingresa un email válido.
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="passwordInput">Contraseña</label>
+                <input id="passwordInput" type="password" class="form-control" required>
+                <div class="invalid-feedback">
+                  La contraseña es obligatoria.
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="rolSelect">Rol</label>
+                <select id="rolSelect" class="form-select" required>
+                  <option value="">Seleccionar</option>
+                  <option>Admin</option>
+                  <option>Usuario</option>
+                </select>
+                <div class="invalid-feedback">
+                  Selecciona un rol.
+                </div>
+              </div>
+
+              <div class="col-12 d-flex flex-wrap gap-2">
+                <button class="btn btn-primary" type="submit">Registrar</button>
+                <button class="btn btn-success" type="button">Guardar</button>
+                <button class="btn btn-danger" type="button">Eliminar</button>
+                <button class="btn btn-secondary" type="button" disabled>Deshabilitado</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
 
-      <!-- CARDS DE RESUMEN -->
-      <div class="row g-4 mb-4">
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="card shadow-sm h-100">
-            <div class="card-body">
-              <h5 class="card-title">Usuarios</h5>
-              <p class="card-text display-6 mb-0">1,248</p>
-              <p class="text-muted small mb-0">+5% en el último mes</p>
-            </div>
+      <!-- USUARIOS CONTENT -->
+      <div id="usuarios-content" class="content-section" style="display: none;">
+        <h1 class="h2">Gestión de Usuarios</h1>
+        <p class="text-muted">Aquí puedes administrar todos los usuarios del sistema.</p>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <table class="table table-striped" id="usuariosTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>Rol</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>JUAN PEREZ</td>
+                  <td>juan@example.com</td>
+                  <td>Admin</td>
+                  <td><button class="btn btn-sm btn-primary">Editar</button></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>MARIA GOMEZ</td>
+                  <td>maria@example.com</td>
+                  <td>Usuario</td>
+                  <td><button class="btn btn-sm btn-primary">Editar</button></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="card shadow-sm h-100">
-            <div class="card-body">
-              <h5 class="card-title">Nuevos registros</h5>
-              <p class="card-text display-6 mb-0">73</p>
-              <p class="text-muted small mb-0">Última semana</p>
+      </div>
+
+      <!-- REPORTES CONTENT -->
+      <div id="reportes-content" class="content-section" style="display: none;">
+        <h1 class="h2">Reportes</h1>
+        <p class="text-muted">Visualiza y genera reportes del sistema.</p>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Reporte de Usuarios</h5>
+                <p class="card-text">Genera un reporte completo de todos los usuarios registrados.</p>
+                <button class="btn btn-primary">Generar Reporte</button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="card shadow-sm h-100">
-            <div class="card-body">
-              <h5 class="card-title">Reportes</h5>
-              <p class="card-text display-6 mb-0">12</p>
-              <p class="text-muted small mb-0">Pendientes</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="card shadow-sm h-100">
-            <div class="card-body">
-              <h5 class="card-title">Actividad</h5>
-              <p class="card-text display-6 mb-0">+24%</p>
-              <p class="text-muted small mb-0">Últimas 48 horas</p>
+          <div class="col-md-6">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Reporte de Actividad</h5>
+                <p class="card-text">Analiza la actividad reciente en el sistema.</p>
+                <button class="btn btn-primary">Generar Reporte</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- FORMULARIO DE REGISTRO -->
-      <div class="card mb-4 shadow-sm">
-        <div class="card-header">
-          <h5 class="card-title mb-0">Registro de Usuarios</h5>
-          <p class="text-muted small mb-0">Completa los datos y presiona "Registrar".</p>
-        </div>
-        <div class="card-body">
-          <form class="row g-3">
-            <div class="col-md-6">
-              <label class="form-label">Nombre</label>
-              <input type="text" class="form-control is-valid" required>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control is-valid" required>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label">Contraseña</label>
-              <input type="password" class="form-control" required>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label">Rol</label>
-              <select class="form-select">
-                <option>Admin</option>
-                <option>Usuario</option>
-              </select>
-            </div>
-
-            <div class="col-12 d-flex flex-wrap gap-2">
-              <button class="btn btn-primary">Registrar</button>
-              <button class="btn btn-success">Guardar</button>
-              <button class="btn btn-danger">Eliminar</button>
-              <button class="btn btn-secondary" disabled>Deshabilitado</button>
-            </div>
-          </form>
+      <!-- AJUSTES CONTENT -->
+      <div id="ajustes-content" class="content-section" style="display: none;">
+        <h1 class="h2">Ajustes del Sistema</h1>
+        <p class="text-muted">Configura las opciones generales del panel administrativo.</p>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Tema</label>
+                <select class="form-select">
+                  <option>Claro</option>
+                  <option>Oscuro</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Idioma</label>
+                <select class="form-select">
+                  <option>Español</option>
+                  <option>Inglés</option>
+                </select>
+              </div>
+              <button class="btn btn-primary">Guardar Cambios</button>
+            </form>
+          </div>
         </div>
       </div>
 
@@ -160,5 +266,75 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.sidebar .nav-link');
+    const contentSections = document.querySelectorAll('.content-section');
+    const registroForm = document.getElementById('registroForm');
+    const usuariosTable = document.getElementById('usuariosTable').querySelector('tbody');
+
+    // Navegación sidebar
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const section = this.getAttribute('data-section');
+
+        // Hide all sections
+        contentSections.forEach(sec => sec.style.display = 'none');
+
+        // Show selected section
+        const targetSection = document.getElementById(section + '-content');
+        if (targetSection) {
+          targetSection.style.display = 'block';
+        }
+
+        // Update active class
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Manejo del formulario de registro
+    registroForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombreInput').value.trim();
+      const email = document.getElementById('emailInput').value.trim();
+      const password = document.getElementById('passwordInput').value;
+      const rol = document.getElementById('rolSelect').value;
+
+      // Validación básica
+      if (!nombre || !email || !password || !rol) {
+        alert('Por favor, completa todos los campos.');
+        return;
+      }
+
+      // Generar ID único (simple)
+      const id = usuariosTable.rows.length + 1;
+
+      // Agregar fila a la tabla
+      const newRow = usuariosTable.insertRow();
+      newRow.innerHTML = `
+        <td>${id}</td>
+        <td>${nombre}</td>
+        <td>${email}</td>
+        <td>${rol}</td>
+        <td><button class="btn btn-sm btn-primary">Editar</button></td>
+      `;
+
+      // Limpiar formulario
+      registroForm.reset();
+
+      // Mostrar mensaje de éxito
+      alert('Usuario registrado exitosamente.');
+
+      // Opcional: cambiar a la sección de usuarios
+      // navLinks.forEach(l => l.classList.remove('active'));
+      // document.querySelector('[data-section="usuarios"]').classList.add('active');
+      // contentSections.forEach(sec => sec.style.display = 'none');
+      // document.getElementById('usuarios-content').style.display = 'block';
+    });
+  });
+</script>
 </body>
 </html>
