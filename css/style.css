@@ -2,12 +2,25 @@
 /* ESTILO GENERAL */
 body {
   font-family: Arial, sans-serif;
+  background-color: #cde3f8;
+  color: #212529;
 }
 
 /* SIDEBAR */
 .sidebar {
   min-height: 100vh;
   border-right: 1px solid #ccc;
+  background: #ffffff;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Ajustes generales del contenido */
+main {
+  min-height: calc(100vh - 56px); /* 56px es la altura aproximada de la navbar */
+}
+
+.card {
+  border-radius: 0.75rem;
 }
 
 /* 🔹 BREAKPOINT 1: TABLETS */
@@ -19,20 +32,28 @@ body {
   h2 {
     font-size: 1.5rem;
   }
+
+  .sidebar {
+    background: #f7f7ff;
+  }
 }
 
 /* 🔹 BREAKPOINT 2: MÓVILES */
 @media (max-width: 768px) {
-  .sidebar {
-    display: none; /* Ocultar sidebar */
-  }
-
   body {
     background-color: #e9ecef;
   }
 
   h2 {
     font-size: 1.3rem;
+  }
+
+  .navbar {
+    background-color: #343a40;
+  }
+
+  .navbar-brand {
+    font-weight: 600;
   }
 }
 
@@ -49,5 +70,9 @@ body {
   button {
     width: 100%;
     margin-bottom: 5px;
+  }
+
+  .navbar-brand {
+    font-size: 1rem;
   }
 }
